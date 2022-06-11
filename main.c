@@ -5,7 +5,7 @@
 
 int main(int argc, char *argv[]) {
 
-    char line[150], *p;
+    char line[150], *p, path[50] = "tests/";
 
     queue playlist = InitQ();
     printf("Comenzi acceptate: add <cd_file_name>, show, play, play all, exit\n");
@@ -18,7 +18,10 @@ int main(int argc, char *argv[]) {
 
     if(strcmp(p, "add") == 0) {
         p = strtok(NULL, " ");
-        FILE *cd = fopen(p,"r");
+        char file_path[50];
+        strcpy(file_path, path);
+        strcat(file_path, p);
+        FILE *cd = fopen(file_path,"r");
 
         if(cd == NULL) 
         printf("Nu exista cd-ul \n");
